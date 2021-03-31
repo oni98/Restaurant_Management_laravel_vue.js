@@ -38,7 +38,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <select :options="foods_menu" name="foods" data-style="custom-input" class="selectpicker form-control" title="Foods (Optional)" name=availableDays multiple data-live-search="true">
+                                <select :options="foods_menu" name="foods" data-style="custom-input" class="selectpicker form-control" data-hide-disabled="true" data-container="body" title="Foods (Optional)" multiple data-live-search="true" data-actions-box="true" >
                                     <option v-for="option in foods_menu" :value="option.value">@{{option.text}}</option>
                                 </select>
                             </div>
@@ -51,13 +51,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <datetime-component value-zone="UTC+6" zone="Asia/Dhaka" use12-hour name="time" type="time" input-class="custom-input"></datetime-component>
+                                <datetime-component value-zone="UTC+6" zone="Asia/Dhaka" use12-hour name="date" type="date" input-class="custom-input" placeholder="Date"></datetime-component>
                                 <span class="text-danger pl-2" v-if="error.date != ''">
                                     @{{ error.date }}
                                 </span>
                             </div>
                             <div class="col-md-6">
-                                <datetime-component value-zone="UTC+6" zone="Asia/Dhaka" use12-hour name="time" type="time" input-class="custom-input"></datetime-component>
+                                <datetime-component value-zone="UTC+6" zone="Asia/Dhaka" use12-hour name="time" type="time" input-class="custom-input" placeholder="Date"></datetime-component>
                                 <span class="text-danger pl-2" v-if="error.time != ''">
                                     @{{ error.time }}
                                 </span>

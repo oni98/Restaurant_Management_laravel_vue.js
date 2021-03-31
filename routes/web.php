@@ -14,14 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('home');
+    return redirect('admin/dashboard');
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');
 
-Route::group(['namespace'=>'App\Http\Controllers','middleware'=>'auth'], function(){
+Route::group(['prefix'=>'admin', 'namespace'=>'App\Http\Controllers\Backend','middleware'=>'auth'], function(){
+    Route::get('dashboard','DashboardController@index');
+});
+
+Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::get('home','HomeController@index');
     Route::get('about','AboutController@index');
     Route::get('menu','MenuController@index');

@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}"/>
 	<link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
 	<link rel="stylesheet" href="{{asset('assets/css/animate.css')}}"/>
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-select.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.css')}}">
 
 </head>
 <body>
@@ -63,7 +63,7 @@
 			<!-- contact form -->
 			@yield('contact_form')
 			<div class="copyright">
-				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i>
+				Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i>
 			</div>
 		</div>
 	</footer>
@@ -71,15 +71,15 @@
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script> --}}
 	<script src="{{asset('assets/js/jquery-3.2.1.min.js')}}"></script>
     <script src="{{ asset('assets/js/popper.min.js')}}"></script>
 	<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap-select.js')}}"></script>
     <script src="{{ asset('assets/js/jquery.slimscroll.js')}}"></script>
 	<script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('assets/js/main.js')}}"></script>
 	<script src="{{asset('assets/js/circle-progress.min.js')}}"></script>
-	<script src="{{asset('assets/js/main.js')}}"></script>
-	<script src="{{ asset('assets/js/bootstrap-select.min.js')}}"></script>
 	@stack('js_script')
 
 

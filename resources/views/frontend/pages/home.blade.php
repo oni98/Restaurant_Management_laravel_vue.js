@@ -3,27 +3,27 @@
 @section('hero_section')
 <section class="hero-section">
     <div class="hero-slider owl-carousel">
+        <div class="hs-item set-bg" data-setbg="{{asset('assets/img/slider/slider-3.jpg')}}">
+            <div class="hs-content">
+                <div class="hsc-warp">
+                    <h2>Delicious Food<span>.</span></h2>
+                    <p>By Chef X</p>
+                </div>
+            </div>
+        </div>
         <div class="hs-item set-bg" data-setbg="{{asset('assets/img/slider/slider-1.jpg')}}">
             <div class="hs-content">
                 <div class="hsc-warp">
-                    <h2>Food and more<span>.</span></h2>
-                    <p>By Chef Francis Smith</p>
+                    <h2>Special Dish<span>.</span></h2>
+                    <p>By Chef X</p>
                 </div>
             </div>
         </div>
         <div class="hs-item set-bg" data-setbg="{{asset('assets/img/slider/slider-2.jpg')}}">
             <div class="hs-content">
                 <div class="hsc-warp">
-                    <h2>Special Dish<span>.</span></h2>
-                    <p>By Chef Francis Smith</p>
-                </div>
-            </div>
-        </div>
-        <div class="hs-item set-bg" data-setbg="{{asset('assets/img/slider/slider-3.jpg')}}">
-            <div class="hs-content">
-                <div class="hsc-warp">
                     <h2>Hygienic Food<span>.</span></h2>
-                    <p>By Chef Francis Smith</p>
+                    <p>By Chef X</p>
                 </div>
             </div>
         </div>
