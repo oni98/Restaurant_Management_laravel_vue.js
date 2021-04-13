@@ -10,7 +10,8 @@
 	<link rel="stylesheet" href="{{asset('assets/backend/vendor/chartist/css/chartist.min.css')}}">
     <link href="{{asset('assets/backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/backend/css/style.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/backend/icons/font-awesome-old/css/font-awesome.min.css')}}"/>
 </head>
 <body>
     <!--*******************
@@ -97,6 +98,7 @@
 	<script src="{{asset('assets/backend/js/deznav-init.js')}}"></script>
 	<script src="{{asset('assets/backend/js/demo.js')}}"></script>
     <script src="{{asset('assets/backend/js/styleSwitcher.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.js')}}"/>
 
 </body>
 </html>

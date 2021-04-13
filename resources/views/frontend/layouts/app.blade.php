@@ -7,7 +7,7 @@
 	<meta name="keywords" content="pulse, restaurant, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
-	<link href="{{asset('assets/img/favicon.ico" rel="shortcut icon')}}"/>
+	<link href="{{asset('assets/backend/images/favicon.png')}}" rel="shortcut icon"/>
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>

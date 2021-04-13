@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('admin/dashboard');
+    return redirect('home');
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -23,6 +23,10 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'admin', 'namespace'=>'App\Http\Controllers\Backend','middleware'=>'auth'], function(){
     Route::get('dashboard','DashboardController@index');
+    Route::get('add_menu','AddMenuController@index');
+    Route::get('available_foods','AvailableFoodController@index');
+    Route::get('reservations','ReservationController@index');
+    Route::get('message','MessageController@index');
 });
 
 Route::group(['namespace'=>'App\Http\Controllers'], function(){

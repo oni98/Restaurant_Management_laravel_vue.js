@@ -1,27 +1,27 @@
 <div class="deznav">
     <div class="deznav-scroll">
         <ul class="metismenu" id="menu">
-            <li><a class="ai-icon" href="javascript:void()" aria-expanded="false">
+            <li><a class="{{ strpos($url=url()->current(), "dashboard")?"active":""}}" href="dashboard" aria-expanded="false">
                     <i class="flaticon-025-dashboard"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-050-info"></i>
-                    <span class="nav-text">Orders</span>
+            <li><a class="has-arrow ai-icon" aria-expanded="false">
+                <i class="fa fa-cutlery"></i>
+                    <span class="nav-text">Foods</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="app-profile.html">Orders list</a></li>
-                    <li><a href="post-details.html">Order Detail</a></li>
+                    <li><a class="{{ strpos($url=url()->current(), "addMenu")?"active":""}}" href="add_menu">Menu</a></li>
+                    <li><a class="{{ strpos($url=url()->current(), "available_foods")?"active":""}}" href="available_foods">Available Foods</a></li>
                 </ul>
             </li>
-            <li><a class="ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-086-star"></i>
-                    <span class="nav-text">Customers</span>
+            <li><a class="{{ strpos($url=url()->current(), "reservations")?"active":""}}" href="reservations" aria-expanded="false">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-text">Reservations</span>
                 </a>
             </li>
-            <li><a class="ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-086-star"></i>
+            <li><a class="{{ strpos($url=url()->current(), "message")?"active":""}}" href="message" aria-expanded="false">
+                <i class="fa fa-envelope"></i>
                     <span class="nav-text">Messages</span>
                 </a>
             </li>
