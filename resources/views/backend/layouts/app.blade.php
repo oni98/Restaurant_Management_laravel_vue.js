@@ -63,7 +63,6 @@
             Footer start
         ***********************************-->
         <div class="footer">
-
             <div class="copyright">
                 <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i></p>
             </div>
@@ -71,7 +70,6 @@
         <!--**********************************
             Footer end
         ***********************************-->
-
 	</div>
     <!--**********************************
         Main wrapper end
@@ -92,13 +90,12 @@
 	<script src="{{asset('assets/backend/vendor/apexchart/apexchart.js')}}"></script>
 
 	<!-- Dashboard 1 -->
-	<script src="{{asset('assets/backend/js/dashboard/dashboard-1.js')}}"></script>
+	{{-- <script src="{{asset('assets/backend/js/dashboard/dashboard-1.js')}}"></script> --}}
 
     <script src="{{asset('assets/backend/js/custom.min.js')}}"></script>
 	<script src="{{asset('assets/backend/js/deznav-init.js')}}"></script>
 	<script src="{{asset('assets/backend/js/demo.js')}}"></script>
-    <script src="{{asset('assets/backend/js/styleSwitcher.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.js')}}"/>
-
+    {{-- <script src="{{asset('assets/backend/js/styleSwitcher.js')}}"></script> --}}
+    @stack('js_script')
 </body>
 </html>

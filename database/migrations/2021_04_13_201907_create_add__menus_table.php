@@ -15,6 +15,11 @@ class CreateAddMenusTable extends Migration
     {
         Schema::create('add__menus', function (Blueprint $table) {
             $table->id();
+            $table->string("category");
+            $table->string("title");
+            $table->string("subtitle")->nullable();
+            $table->string("price");
+            $table->boolean("status")->default(true);
             $table->timestamps();
         });
     }
