@@ -12774,6 +12774,18 @@ svg.pulse-svg .third-circle {
     background: #fbfbfb;
 }
 
+@media only screen and (max-width: 960px) {
+    .search-area {
+        width: 200px;
+    }
+    .search-area .input-group-append .input-group-text i {
+        font-size: 18px;
+    }
+    .search-area .input-group-append .input-group-text {
+        height: 41px;
+    }
+}
+
 @media only screen and (max-width: 1400px) {
     .search-area {
         width: 200px;
@@ -85541,6 +85553,42 @@ $color_pallate_15: #ed0b4c; */
 }
 
  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 

@@ -17,7 +17,6 @@
 	<link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
 	<link rel="stylesheet" href="{{asset('assets/css/animate.css')}}"/>
 	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.css')}}">
-
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -81,7 +80,6 @@
     <script src="{{asset('assets/js/main.js')}}"></script>
 	<script src="{{asset('assets/js/circle-progress.min.js')}}"></script>
 	@stack('js_script')
-
 
 	<!-- load for map -->
 	{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script> --}}

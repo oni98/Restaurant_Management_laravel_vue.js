@@ -51,13 +51,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <datetime-component value-zone="UTC+6" zone="Asia/Dhaka" use12-hour name="date" type="date" input-class="custom-input" placeholder="Date"></datetime-component>
+                                <datetime-component v-model="date" value-zone="UTC+6" zone="Asia/Dhaka" use12-hour name="date" type="date" input-class="custom-input" placeholder="Date"></datetime-component>
                                 <span class="text-danger pl-2" v-if="error.date != ''">
                                     @{{ error.date }}
                                 </span>
                             </div>
                             <div class="col-md-6">
-                                <datetime-component value-zone="UTC+6" zone="Asia/Dhaka" use12-hour name="time" type="time" input-class="custom-input" placeholder="Date"></datetime-component>
+                                <datetime-component v-model="time" value-zone="UTC+6" zone="Asia/Dhaka" use12-hour name="time" type="time" input-class="custom-input" placeholder="Time"></datetime-component>
                                 <span class="text-danger pl-2" v-if="error.time != ''">
                                     @{{ error.time }}
                                 </span>
@@ -83,12 +83,8 @@
         var app = new Vue({
             el: '#booking',
             data: {
-                name: '',
-                phone: '',
-                members: '',
                 time: '',
                 date: '',
-                foods: [],
                 foods_menu:[
                     {value: 'Sunday', text: 'Sunday'},
                     {value: 'Monday', text: 'Monday'},
@@ -139,13 +135,23 @@
                         }
                         if(value.code = 201){
                             swal("Done", "Successfully Booked Your Seat", "success", {button: "OK",timer: 2000});
+                            ref.error.name = '';
+                            ref.error.phone = '';
+                            ref.error.members = '';
+                            ref.error.date = '';
+                            ref.error.time = '';
+                            event.target.name.value = '';
+                            event.target.phone.value = '';
+                            event.target.members.value = '';
+                            ref.date = '';
+                            ref.time= '';
                         }
                     });
-                }
+                },
             },
             created: function() {
 
-            }
+            },
         });
 
     </script>

@@ -53,7 +53,11 @@
             Content body start
         ***********************************-->
         <div class="content-body">
-            @yield('main_content')
+            <div class="container-fluid">
+                <div class="row">
+                    @yield('main_content')
+                </div>
+            </div>
         </div>
         <!--**********************************
             Content body end
@@ -79,6 +83,7 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script> --}}
     <script src="{{asset('assets/backend/vendor/global/global.min.js')}}"></script>
 	<script src="{{asset('assets/backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
 	<script src="{{asset('assets/backend/vendor/chart.js/Chart.bundle.min.js')}}"></script>

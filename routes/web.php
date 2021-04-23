@@ -36,4 +36,3 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::get('booking','BookingController@index');
     Route::get('delivery','HomeDeliveryController@index');
 });
-
