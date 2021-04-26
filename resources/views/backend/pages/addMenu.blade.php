@@ -1,7 +1,7 @@
 @extends('backend.layouts.app')
 @section('title', 'Admin Dashboard')
 @section('main_content')
-    <div class="col-xl-12 col-lg-12">
+    <div class="col-xl-12 col-lg-12" id="add_menu">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Add Food</h4>

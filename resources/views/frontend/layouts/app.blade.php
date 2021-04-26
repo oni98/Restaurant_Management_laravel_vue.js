@@ -16,7 +16,10 @@
 	<link rel="stylesheet" href="{{asset('assets/css/owl.carousel.css')}}"/>
 	<link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
 	<link rel="stylesheet" href="{{asset('assets/css/animate.css')}}"/>
-	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css')}}">
+    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"> --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" /> --}}
+
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -70,11 +73,10 @@
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="{{ asset('js/app.js') }}"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script> --}}
 	<script src="{{asset('assets/js/jquery-3.2.1.min.js')}}"></script>
     <script src="{{ asset('assets/js/popper.min.js')}}"></script>
 	<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('assets/js/bootstrap-select.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap-select.min.js')}}"></script>
     <script src="{{ asset('assets/js/jquery.slimscroll.js')}}"></script>
 	<script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('assets/js/main.js')}}"></script>
