@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Add_Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AddMenuController extends Controller
 {
@@ -16,7 +17,18 @@ class AddMenuController extends Controller
      */
     public function index()
     {
-        return view($this->root.'addMenu');
+        return view($this->root.'available_foods');
+    }
+
+    public function menuList()
+    {
+        $menu = Add_Menu::get()->all();
+        $data = [
+            'data' => $menu,
+            'status' => 'ok',
+            'code' => 200
+        ];
+        return response()->json($data);
     }
 
     /**
@@ -26,7 +38,7 @@ class AddMenuController extends Controller
      */
     public function create()
     {
-        //
+        return view($this->root.'addMenu');
     }
 
     /**
@@ -37,7 +49,40 @@ class AddMenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $validator = Validator::make($request->all(),[
+            'category' => 'required',
+            'title' => 'required',
+            'price' => 'required',
+        ]);
+        if($validator->fails()){
+            $data = [
+                'data' => $validator->errors(),
+                'error' => true,
+                'code' => 500
+            ];
+            return response()->json($data);
+        }
+
+        $menu = new Add_Menu();
+        $menu->category = json_encode($request->category);
+        $menu->subtitle = $request->subtitle;
+        $menu->title = $request->title;
+        $menu->price = $request->price;
+        if($menu->save()){
+            $data = [
+                'data' => $menu,
+                'status' => 'ok',
+                'code' => 201
+            ];
+        }else{
+            $data = [
+                'data' => $menu,
+                'status' => 'error',
+                'code' => 500
+            ];
+        }
+        return response()->json($data);
     }
 
     /**

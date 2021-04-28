@@ -79,6 +79,7 @@
 @endsection
 
 @push('js_script')
+
     <script>
         var app = new Vue({
             el: '#booking',

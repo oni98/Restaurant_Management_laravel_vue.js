@@ -22,9 +22,10 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::apiResource('booking','BookingController');
 });
 
-Route::group(['prefix'=>'admin', 'namespace'=>'App\Http\Controllers\Backend','middleware'=>'auth'], function(){
+Route::group(['prefix'=>'admin', 'namespace'=>'App\Http\Controllers\Backend'], function(){
     Route::apiResource('dashboard','DashboardController');
     Route::apiResource('add_menu','AddMenuController');
+    Route::get('menu/list','AddMenuController@menuList');
     Route::apiResource('available_foods','AvailableFoodController');
     Route::apiResource('reservations','ReservationController');
     Route::apiResource('message','MessageController');

@@ -11,7 +11,7 @@
                     <span class="nav-text">Foods</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a class="{{ strpos($url=url()->current(), "addMenu")?"active":""}}" href="add_menu">Menu</a></li>
+                    <li><a class="{{ strpos($url=url()->current(), "addMenu")?"active":""}}" href="add_menu">Add Menu</a></li>
                     <li><a class="{{ strpos($url=url()->current(), "available_foods")?"active":""}}" href="available_foods">Available Foods</a></li>
                 </ul>
             </li>

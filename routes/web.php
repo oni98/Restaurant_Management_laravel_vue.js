@@ -23,8 +23,8 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'admin', 'namespace'=>'App\Http\Controllers\Backend','middleware'=>'auth'], function(){
     Route::get('dashboard','DashboardController@index');
-    Route::get('add_menu','AddMenuController@index');
-    Route::get('available_foods','AvailableFoodController@index');
+    Route::get('add_menu','AddMenuController@create');
+    Route::get('available_foods','AddMenuController@index');
     Route::get('reservations','ReservationController@index');
     Route::get('message','MessageController@index');
 });
