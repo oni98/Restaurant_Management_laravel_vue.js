@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Add_Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AddMenuController extends Controller
@@ -69,6 +70,16 @@ class AddMenuController extends Controller
         $menu->subtitle = $request->subtitle;
         $menu->title = $request->title;
         $menu->price = $request->price;
+        //menu image
+        if ($request->image) {
+            $image_name = 'image' . '-' . time() . '.' . $request->image->getClientOriginalExtension();
+            $path = $request->image->storeAs('public/menu', $image_name);
+            $menu->image = $image_name;
+        }
+        else{
+            $menu->image = 0;
+        }
+        //menu save
         if($menu->save()){
             $data = [
                 'data' => $menu,

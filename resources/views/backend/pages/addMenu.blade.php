@@ -48,7 +48,17 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Image</label>
-                                <input type="text" name="image" class="form-control" placeholder="Add image">
+                                <input class="form-control" type="file" name="image">
+                                {{-- <vue-dropzone
+                                    ref="myVueDropzone"
+                                    id="dropzone"
+                                    :options="dropzoneOptions"
+                                    :useCustomSlot="true"
+                                    v-on:vdropzone-success="uploadSuccess"
+
+                {{--                    v-on:vdropzone-error="uploadError"--}}
+                {{--                    v-on:vdropzone-removed-file="fileRemoved"--}}
+                                {{-- ></vue-dropzone> --}}
                                 <span class="text-danger pl-2" v-if="">
                                     @{{  }}
                                 </span>
@@ -71,13 +81,31 @@
                     category: '',
                     title: '',
                     price: '',
-                }
+                },
+                images: '',
+                // dropzoneOptions: {
+                //     url: "{{ route('dropzone.upload') }}",
+                //     thumbnailWidth: 150,
+                //     maxFilesize: 5.0,
+                //     maxFiles: 1,
+                //     remove: true,
+                //     headers: {
+                //         "My-Awesome-Header": "header value",
+                //         'X-CSRF-Token' : "{{ csrf_token() }}",
+                //         'img-path' : "menu"
+                //     }
+                // }
             },
             methods: {
+                // uploadSuccess: function (file, response){
+                //     let ref = this;
+                //     ref.images = response.file;
+                // },
                 addMenu: function(event) {
                     let ref = this;
                     let url = "/api/admin/add_menu";
                     let data = new FormData(event.target);
+                    //data.append('images', ref.images);
                     axios.post(url, data).then(function(response) {
                         value = response.data;
                         if(value.error){
@@ -100,9 +128,13 @@
                             swal("Done", "Successfully added food in Menu", "success", {button: "OK",timer: 2000});
                             $('.selectpicker').selectpicker('val', '');
                             //$('.selectpicker').selectpicker('refresh');
-                            event.target.subtitle.value = '',
-                            event.target.title.value = '',
-                            event.target.price.value = ''
+                            ref.errors.category = '';
+                            ref.errors.title = '';
+                            ref.errors.price = '';
+                            event.target.subtitle.value = '';
+                            event.target.title.value = '';
+                            event.target.price.value = '';
+                            event.target.image.value = '';
                         }
                     });
                 }

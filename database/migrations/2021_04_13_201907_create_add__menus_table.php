@@ -19,6 +19,7 @@ class CreateAddMenusTable extends Migration
             $table->string("title");
             $table->string("subtitle")->nullable();
             $table->string("price");
+            $table->string("image")->nullable();
             $table->boolean("status")->default(true);
             $table->timestamps();
         });

@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/admin/dashboard', function () {
+    return redirect('admin/dashboard');
+});
 Route::get('/', function () {
     return redirect('home');
 });
@@ -35,4 +38,6 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::get('menu','MenuController@index');
     Route::get('booking','BookingController@index');
     Route::get('delivery','HomeDeliveryController@index');
+    Route::post('dropzone/upload', 'HelpersController@dropzone')->name('dropzone.upload');
+    Route::post('dropzone/file/remove', 'HelpersController@removeDropzone')->name('dropzone.remove');
 });

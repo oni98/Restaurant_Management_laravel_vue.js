@@ -22,23 +22,39 @@
                                         <th><strong>SL.</strong></th>
                                         <th><strong>Image</strong></th>
                                         <th><strong>Title</strong></th>
-                                        <th><strong>Sub Title</strong></th>
                                         <th><strong>Price</strong></th>
                                         <th><strong>Action</strong></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="(food,index) in foods" :key="food.id">
-                                        <td>
+                                        <td v-if="food.status != 0">
                                             <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                                <input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
+                                                <input type="checkbox" class="custom-control-input" id="customCheckBox2" required="" @click="updateStatus" checked>
+                                                <label class="custom-control-label" for="customCheckBox2"></label>
+                                            </div>
+                                        </td>
+                                        <td v-else>
+                                            <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                                <input type="checkbox" class="custom-control-input" id="customCheckBox2" required="" @click="updateStatus">
                                                 <label class="custom-control-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
                                         <td>@{{ index+1 }}</td>
-                                        <td><div class="d-flex align-items-center"><img src="" class="rounded-lg mr-2" width="24" alt=""></td>
-                                        <td>@{{ food.title }}</td>
-                                        <td>@{{ food.subtitle }}</td>
+                                        <td v-if="food.image != 0">
+                                            <div class="d-flex align-items-center">
+                                                <img :src="'/storage/menu/'+food.image" class="rounded-lg" width="100" height="100" alt="">
+                                            </div>
+                                        </td>
+                                        <td v-else>
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{asset('assets/img/default.png')}}" class="rounded-lg" width="100" height="100" alt="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>@{{ food.title }}</div>
+                                            <div>@{{ food.subtitle }}</div>
+                                        </td>
                                         <td>@{{ food.price }}</td>
                                         <td>
                                             <div class="d-flex">
@@ -62,7 +78,7 @@
     let app = new Vue({
         el:'#available_foods',
         data: {
-            foods: []
+            foods: [],
         },
         methods: {
             getMenu: function(){
@@ -71,7 +87,21 @@
                 axios.get(url).then(function(response){
                     ref.foods = response.data.data;
                 });
-            }
+            },
+            updateStatus: function(id) {
+                let ref = this;
+                console.log(event.target.checked);
+                // let url = '/api/admin/taxes/status/' + id;
+                // let data = new FormData();
+                // data.append("status", event.target.value);
+                // data.append("_method", "PUT");
+                // axios.post(url, data).then(function(response) {
+                //     let data = response.data;
+                //     if (data.code == 201) {
+                //         ref.getTax();
+                //     }
+                // });
+            },
         },
         created: function(){
             this.getMenu();
