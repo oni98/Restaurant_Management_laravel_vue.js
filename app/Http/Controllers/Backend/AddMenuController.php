@@ -18,7 +18,7 @@ class AddMenuController extends Controller
      */
     public function index()
     {
-        return view($this->root.'available_foods');
+        return view($this->root.'available_foods.layout');
     }
 
     public function menuList()
@@ -128,6 +128,51 @@ class AddMenuController extends Controller
     public function update(Request $request, Add_Menu $add_Menu)
     {
         //
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        //dd($request);
+        $menu = Add_Menu::find($id);
+        $menu->status = $request->status;
+        if($menu->update()){
+            $data = [
+                'data' => $menu,
+                'status' => 'ok',
+                'code' => 201
+            ];
+        }else{
+            $data = [
+                'data' => $menu,
+                'status' => 'error',
+                'code' => 500
+            ];
+        }
+        return response()->json($data);
+    }
+
+    public function updateALLStatus(Request $request, $time)
+    {
+        $menu = Add_Menu::get()->all();
+        $menu = $menu->whereHas('employee.user', function ($query) use ($time) {
+            return $query->where('name', 'like', '%'.$time.'%');
+        });
+        dd($menu);
+        $menu->status = $request->status;
+        if($menu->update()){
+            $data = [
+                'data' => $menu,
+                'status' => 'ok',
+                'code' => 201
+            ];
+        }else{
+            $data = [
+                'data' => $menu,
+                'status' => 'error',
+                'code' => 500
+            ];
+        }
+        return response()->json($data);
     }
 
     /**
