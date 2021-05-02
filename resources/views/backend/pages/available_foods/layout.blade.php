@@ -97,6 +97,9 @@
                         ref.allDinner = 0;
                 });
             },
+            foodFilter: function (checkCategory) {
+                return this.foods.filter(food => food.category.includes(checkCategory));
+            },
             updateStatus: function(id) {
                 let ref = this;
                 let url = '/api/admin/menu/status/' + id;
@@ -107,10 +110,9 @@
                 axios.post(url, data).then(function(response) {
                     let data = response.data;
                     if (data.code == 201) {
-                        //ref.getMenu();
+                        ref.getMenu();
                     }
                 });
-                ref.getMenu();
             },
             updateAllStatus: function(category){
                 let ref = this;
@@ -122,14 +124,10 @@
                 axios.post(url, data).then(function(response) {
                     let data = response.data;
                     if (data.code == 201) {
-                        //ref.getMenu();
+                        ref.getMenu();
                     }
                 });
-                ref.getMenu();
             },
-            foodFilter: function (checkCategory) {
-                return this.foods.filter(food => food.category.includes(checkCategory));
-            }
         },
         created: function(){
             this.getMenu();

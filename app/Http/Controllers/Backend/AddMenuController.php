@@ -153,13 +153,6 @@ class AddMenuController extends Controller
 
     public function updateALLStatus(Request $request, $category)
     {
-        //$menu = $menu->where('category', 'like', '%'.$category.'%');
-        // foreach($menu as $key => $menus){
-        //     $menu[$key]['category'] = json_decode($menu[$key]['category']);
-        // }
-        //$menu->status = $request->status;
-        //$menu = update(array('status' => $request->status));
-        //dd($category);
         if($menu = Add_Menu::where('category', 'like', '%'.$category.'%')->update(['status' => $request->status])){
             $data = [
                 'data' => $menu,
