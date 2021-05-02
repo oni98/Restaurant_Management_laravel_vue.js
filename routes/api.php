@@ -27,7 +27,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'App\Http\Controllers\Backend'], f
     Route::apiResource('add_menu','AddMenuController');
     Route::get('menu/list','AddMenuController@menuList');
     Route::put('menu/status/{id}','AddMenuController@updateStatus');
-    Route::put('menu/all_status/{time}','AddMenuController@updateALLStatus');
+    Route::put('menu/all_status/{category}','AddMenuController@updateALLStatus');
     Route::apiResource('available_foods','AvailableFoodController');
     Route::apiResource('reservations','ReservationController');
     Route::apiResource('message','MessageController');

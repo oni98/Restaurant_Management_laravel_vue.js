@@ -10,10 +10,15 @@
                         <thead>
                             <tr>
                                 <th style="width:50px;">
-                                    <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                        <input type="checkbox" class="custom-control-input" id="breakfast" required=""
+                                    <div v-if="allBreakfast != 0" class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                        <input type="checkbox" class="custom-control-input" id="allBreakfast" required=""
+                                            @click="updateAllStatus('breakfast')" checked>
+                                        <label class="custom-control-label" for="allBreakfast"></label>
+                                    </div>
+                                    <div v-else class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                        <input type="checkbox" class="custom-control-input" id="allBreakfast" required=""
                                             @click="updateAllStatus('breakfast')">
-                                        <label class="custom-control-label" for="breakfast"></label>
+                                        <label class="custom-control-label" for="allBreakfast"></label>
                                     </div>
                                 </th>
                                 <th><strong>SL.</strong></th>
@@ -24,18 +29,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(food,index) in foods" :key="food.id" v-if="food.category.includes('breakfast')">
+                            <tr v-for="(food,index) in foodFilter('breakfast')" :key="food.id">
                                 <td>
                                     <div v-if="food.status != 0"
                                         class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                        <input type="checkbox" class="custom-control-input" :id="food.id" required=""
+                                        <input type="checkbox" class="custom-control-input" :id="'breakfast'+index" required=""
                                             @click="updateStatus(food.id)" checked>
-                                        <label class="custom-control-label" :for="food.id"></label>
+                                        <label class="custom-control-label" :for="'breakfast'+index"></label>
                                     </div>
                                     <div v-else class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                        <input type="checkbox" class="custom-control-input" :id="food.id" required=""
+                                        <input type="checkbox" class="custom-control-input" :id="'breakfast'+index" required=""
                                             @click="updateStatus(food.id)">
-                                        <label class="custom-control-label" :for="food.id"></label>
+                                        <label class="custom-control-label" :for="'breakfast'+index"></label>
                                     </div>
                                 </td>
                                 <td>@{{ index + 1 }}</td>

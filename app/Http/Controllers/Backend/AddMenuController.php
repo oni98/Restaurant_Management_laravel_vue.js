@@ -132,7 +132,7 @@ class AddMenuController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        //dd($request);
+        //dd($id);
         $menu = Add_Menu::find($id);
         $menu->status = $request->status;
         if($menu->update()){
@@ -151,15 +151,16 @@ class AddMenuController extends Controller
         return response()->json($data);
     }
 
-    public function updateALLStatus(Request $request, $time)
+    public function updateALLStatus(Request $request, $category)
     {
-        $menu = Add_Menu::get()->all();
-        $menu = $menu->whereHas('employee.user', function ($query) use ($time) {
-            return $query->where('name', 'like', '%'.$time.'%');
-        });
-        dd($menu);
-        $menu->status = $request->status;
-        if($menu->update()){
+        //$menu = $menu->where('category', 'like', '%'.$category.'%');
+        // foreach($menu as $key => $menus){
+        //     $menu[$key]['category'] = json_decode($menu[$key]['category']);
+        // }
+        //$menu->status = $request->status;
+        //$menu = update(array('status' => $request->status));
+        //dd($category);
+        if($menu = Add_Menu::where('category', 'like', '%'.$category.'%')->update(['status' => $request->status])){
             $data = [
                 'data' => $menu,
                 'status' => 'ok',

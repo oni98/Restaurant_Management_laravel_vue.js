@@ -19,7 +19,11 @@
         el:'#available_foods',
         data: {
             foods: [],
-            status: ''
+            status: '',
+            allBreakfast: '',
+            allBrunch: '',
+            allLunch: '',
+            allDinner: '',
         },
         methods: {
             getMenu: function(){
@@ -27,6 +31,70 @@
                 let url = '/api/admin/menu/list';
                 axios.get(url).then(function(response){
                     ref.foods = response.data.data;
+                    let track = '';
+                    //All Breakfast checkbox
+                    for(let i = 0; i<ref.foods.length; i++){
+                        if(ref.foods[i].category.includes('breakfast')){
+                            if(ref.foods[i].status == 1)
+                                track = 'allBreakfast';
+                            else{
+                                track = 'someBreakfast';
+                                break;
+                            }
+                        }
+                    }
+                    if(track=='allBreakfast')
+                        ref.allBreakfast = 1;
+                    else
+                        ref.allBreakfast = 0;
+
+                    //All Brunch checkbox
+                    for(let i = 0; i<ref.foods.length; i++){
+                        if(ref.foods[i].category.includes('brunch')){
+                            if(ref.foods[i].status == 1)
+                                track = 'allBrunch';
+                            else{
+                                track = 'someBrunch';
+                                break;
+                            }
+                        }
+                    }
+                    if(track=='allBrunch')
+                        ref.allBrunch = 1;
+                    else
+                        ref.allBrunch = 0;
+
+                    //All Lunch checkbox
+                    for(let i = 0; i<ref.foods.length; i++){
+                        if(ref.foods[i].category.includes('lunch')){
+                            if(ref.foods[i].status == 1)
+                                track = 'allLunch';
+                            else{
+                                track = 'someLunch';
+                                break;
+                            }
+                        }
+                    }
+                    if(track=='allLunch')
+                        ref.allLunch = 1;
+                    else
+                        ref.allLunch = 0;
+
+                    //All Dinner checkbox
+                    for(let i = 0; i<ref.foods.length; i++){
+                        if(ref.foods[i].category.includes('dinner')){
+                            if(ref.foods[i].status == 1)
+                                track = 'allDinner';
+                            else{
+                                track = 'someDinner';
+                                break;
+                            }
+                        }
+                    }
+                    if(track=='allDinner')
+                        ref.allDinner = 1;
+                    else
+                        ref.allDinner = 0;
                 });
             },
             updateStatus: function(id) {
@@ -39,13 +107,14 @@
                 axios.post(url, data).then(function(response) {
                     let data = response.data;
                     if (data.code == 201) {
-                        ref.getMenu();
+                        //ref.getMenu();
                     }
                 });
+                ref.getMenu();
             },
-            updateAllStatus: function(time){
+            updateAllStatus: function(category){
                 let ref = this;
-                let url = '/api/admin/menu/all_status/' + time;
+                let url = '/api/admin/menu/all_status/' + category;
                 let data = new FormData();
                 event.target.checked != true? ref.status = 0: ref.status = 1;
                 data.append("status", ref.status);
@@ -53,9 +122,13 @@
                 axios.post(url, data).then(function(response) {
                     let data = response.data;
                     if (data.code == 201) {
-                        ref.getMenu();
+                        //ref.getMenu();
                     }
                 });
+                ref.getMenu();
+            },
+            foodFilter: function (checkCategory) {
+                return this.foods.filter(food => food.category.includes(checkCategory));
             }
         },
         created: function(){
