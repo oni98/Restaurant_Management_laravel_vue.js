@@ -55,6 +55,7 @@ class AddMenuController extends Controller
             'category' => 'required',
             'title' => 'required',
             'price' => 'required',
+            'code' => 'required',
         ]);
         if($validator->fails()){
             $data = [
@@ -70,6 +71,7 @@ class AddMenuController extends Controller
         $menu->subtitle = $request->subtitle;
         $menu->title = $request->title;
         $menu->price = $request->price;
+        $menu->food_code = $request->code;
         //menu image
         if ($request->image) {
             $image_name = 'image' . '-' . time() . '.' . $request->image->getClientOriginalExtension();

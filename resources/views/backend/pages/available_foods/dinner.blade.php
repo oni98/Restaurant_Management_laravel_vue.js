@@ -22,6 +22,7 @@
                                     </div>
                                 </th>
                                 <th><strong>SL.</strong></th>
+                                <th><strong>Food Code</strong></th>
                                 <th><strong>Image</strong></th>
                                 <th><strong>Food Name</strong></th>
                                 <th><strong>Price</strong></th>
@@ -43,6 +44,7 @@
                                     </div>
                                 </td>
                                 <td>@{{ index + 1 }}</td>
+                                <td>@{{ food.food_code }}</td>
                                 <td v-if="food.image != 0">
                                     <div class="d-flex align-items-center">
                                         <img :src="'/storage/menu/'+food.image" class="rounded-lg" width="50"

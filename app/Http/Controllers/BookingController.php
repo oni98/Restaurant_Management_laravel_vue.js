@@ -64,7 +64,7 @@ class BookingController extends Controller
         $booking->name = $request->name;
         $booking->phone = $request->phone;
         $booking->members = $request->members;
-        $booking->foods = $request->foods;
+        $booking->foods = json_encode($request->foods);
         $booking->date = $request->date;
         $booking->time = $request->time;
         if($booking->save())

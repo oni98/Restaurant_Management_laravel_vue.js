@@ -30,7 +30,7 @@
                                 </span>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" name="phone" placeholder="Mobile No.">
+                                <input type="number" name="phone" placeholder="Mobile No.">
                                 <span class="text-danger pl-2" v-if="error.phone != ''">
                                     @{{ error.phone }}
                                 </span>
@@ -38,8 +38,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <select :options="foods_menu" name="foods" data-style="custom-input" class="selectpicker form-control" data-hide-disabled="true" data-container="body" title="Foods (Optional)" multiple data-live-search="true" data-actions-box="true" >
-                                    <option v-for="option in foods_menu" :value="option.value">@{{option.text}}</option>
+                                <select :options="foods_menu" name="foods[]" data-style="custom-input" class="selectpicker form-control" data-hide-disabled="true" data-container="body" title="Foods (Optional)" multiple data-live-search="true" data-actions-box="true" >
+                                    <option v-for="option in foods_menu" :value="option.id">@{{option.text}}</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
@@ -86,15 +86,8 @@
             data: {
                 time: '',
                 date: '',
-                foods_menu:[
-                    {value: 'Sunday', text: 'Sunday'},
-                    {value: 'Monday', text: 'Monday'},
-                    {value: 'Tuesday', text: 'Tuesday'},
-                    {value: 'Wednesday', text: 'Wednesday'},
-                    {value: 'Thursday', text: 'Thursday'},
-                    {value: 'Friday', text: 'Friday'},
-                    {value: 'Saturday', text: 'Saturday'}
-                ],
+                foods_menu:[],
+                food:[],
                 error: {
                     name: '',
                     phone: '',
@@ -104,6 +97,31 @@
                 }
             },
             methods: {
+                getMenu: function() {
+                    let ref = this;
+                    let url = '/api/admin/menu/list';
+                    axios.get(url).then(function(response) {
+                        let data = response.data;
+                        ref.food = data.data;
+                        let food_collection = [];
+                        for (let i = 0; i < ref.food.length; i++) {
+                            let status = ref.food[i].status;
+                            if(status!=0){
+                                let single = {};
+                                single.text = ref.food[i].title +' with '+ ref.food[i].subtitle;
+                                single.id = ref.food[i].food_code;
+                                food_collection.push(single);
+                            }
+                        }
+                        if(food_collection.length <= 0){
+                            food_collection.push({
+                            text : 'No Food Available',
+                            id: ''
+                        });
+                        }
+                        ref.foods_menu = food_collection;
+                    });
+                },
                 confirmBooking(event) {
                     let ref = this;
                     let url = '/api/booking';
@@ -136,6 +154,7 @@
                         }
                         if(value.code = 201){
                             swal("Done", "Successfully Booked Your Seat", "success", {button: "OK",timer: 2000});
+                            $('.selectpicker').selectpicker('val', '');
                             ref.error.name = '';
                             ref.error.phone = '';
                             ref.error.members = '';
@@ -151,7 +170,7 @@
                 },
             },
             created: function() {
-
+                this.getMenu();
             },
         });
 

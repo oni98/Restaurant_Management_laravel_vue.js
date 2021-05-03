@@ -46,7 +46,14 @@
                                     @{{ errors.price }}
                                 </span>
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
+                                <label>Food Code</label>
+                                <input type="text" name="code" class="form-control" placeholder="Food Code">
+                                <span class="text-danger pl-2" v-if="errors.code != ''">
+                                    @{{ errors.code }}
+                                </span>
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label>Image</label>
                                 <input class="form-control" type="file" name="image">
                                 {{-- <vue-dropzone
@@ -81,6 +88,7 @@
                     category: '',
                     title: '',
                     price: '',
+                    code: '',
                 },
                 images: '',
                 // dropzoneOptions: {
@@ -112,6 +120,7 @@
                             ref.errors.category = '';
                             ref.errors.title = '';
                             ref.errors.price = '';
+                            ref.errors.code = '';
 
                             if(value.data.category)
                                 ref.errors.category = value.data.category[0];
@@ -121,6 +130,9 @@
 
                             if(value.data.price)
                                 ref.errors.price = value.data.price[0];
+
+                            if(value.data.code)
+                                ref.errors.code = value.data.code[0];
 
                             return;
                         }
@@ -134,6 +146,7 @@
                             event.target.subtitle.value = '';
                             event.target.title.value = '';
                             event.target.price.value = '';
+                            event.target.code.value = '';
                             event.target.image.value = '';
                         }
                     });
