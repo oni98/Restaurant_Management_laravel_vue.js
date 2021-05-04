@@ -55,7 +55,10 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Image</label>
-                                <input class="form-control" type="file" name="image">
+                                <div class="custom-file">
+                                    <input class="form-control custom-file-input" type="file" name="image">
+                                    <label class="form-control custom-file-label">Choose file</label>
+                                </div>
                                 {{-- <vue-dropzone
                                     ref="myVueDropzone"
                                     id="dropzone"

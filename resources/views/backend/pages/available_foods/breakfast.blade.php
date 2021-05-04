@@ -1,8 +1,25 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Breakfast Menu</h4>
+            <div class="row card-header">
+                <div class="col-md-8">
+                    <h4 class="card-title">Breakfast Menu</h4>
+                </div>
+                <div class="input-group col-md-4">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Show</label>
+                    </div>
+                    <select class="form-control default-select" id="sel2" value="paginate.limit"
+                        @change="onChange($event)">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <div class="input-group-append">
+                        <label class="input-group-text">Entries</label>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -10,14 +27,15 @@
                         <thead>
                             <tr>
                                 <th style="width:50px;">
-                                    <div v-if="allBreakfast != 0" class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                        <input type="checkbox" class="custom-control-input" id="allBreakfast" required=""
-                                            @click="updateAllStatus('breakfast')" checked>
+                                    <div v-if="allBreakfast != 0"
+                                        class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                        <input type="checkbox" class="custom-control-input" id="allBreakfast"
+                                            required="" @click="updateAllStatus('breakfast')" checked>
                                         <label class="custom-control-label" for="allBreakfast"></label>
                                     </div>
                                     <div v-else class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                        <input type="checkbox" class="custom-control-input" id="allBreakfast" required=""
-                                            @click="updateAllStatus('breakfast')">
+                                        <input type="checkbox" class="custom-control-input" id="allBreakfast"
+                                            required="" @click="updateAllStatus('breakfast')">
                                         <label class="custom-control-label" for="allBreakfast"></label>
                                     </div>
                                 </th>
@@ -34,18 +52,18 @@
                                 <td>
                                     <div v-if="food.status != 0"
                                         class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                        <input type="checkbox" class="custom-control-input" :id="'breakfast'+index" required=""
-                                            @click="updateStatus(food.id)" checked>
+                                        <input type="checkbox" class="custom-control-input" :id="'breakfast'+index"
+                                            required="" @click="updateStatus(food.id)" checked>
                                         <label class="custom-control-label" :for="'breakfast'+index"></label>
                                     </div>
                                     <div v-else class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                        <input type="checkbox" class="custom-control-input" :id="'breakfast'+index" required=""
-                                            @click="updateStatus(food.id)">
+                                        <input type="checkbox" class="custom-control-input" :id="'breakfast'+index"
+                                            required="" @click="updateStatus(food.id)">
                                         <label class="custom-control-label" :for="'breakfast'+index"></label>
                                     </div>
                                 </td>
                                 <td>@{{ index + 1 }}</td>
-                                <td>@{{ food.food_code }}</td>
+                                <td>@{{ food . food_code }}</td>
                                 <td v-if="food.image != 0">
                                     <div class="d-flex align-items-center">
                                         <img :src="'/storage/menu/'+food.image" class="rounded-lg" width="50"
@@ -54,7 +72,8 @@
                                 </td>
                                 <td v-else>
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ asset('assets/img/default.png') }}" class="rounded-lg" width="50" height="50" alt="">
+                                        <img src="{{ asset('assets/img/default.png') }}" class="rounded-lg" width="50"
+                                            height="50" alt="">
                                     </div>
                                 </td>
                                 <td>
