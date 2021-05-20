@@ -21,10 +21,16 @@ class AddMenuController extends Controller
         return view($this->root.'available_foods.layout');
     }
 
-    public function menuList()
+    public function menuList(Request $request)
     {
-        $menu = Add_Menu::get()->all();
+        $limit = $request->limit;
+        $page = $request->page;
+        $offset = ($limit * ($page - 1));
+        $menu = Add_Menu::offset($offset)->limit($limit)->get();
+        $total = Add_Menu::count();
         $data = [
+            'total' => $total,
+            'limit' => $limit,
             'data' => $menu,
             'status' => 'ok',
             'code' => 200

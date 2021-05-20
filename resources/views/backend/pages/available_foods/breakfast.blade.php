@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="breakfast">
     <div class="col-lg-12">
         <div class="card">
             <div class="row card-header">
@@ -9,8 +9,8 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text">Show</label>
                     </div>
-                    <select class="form-control default-select" id="sel2" value="paginate.limit"
-                        @change="onChange($event)">
+                    <select class="form-control default-select" id="sel2" :value="paginate.limit"
+                        @change="changeLimit($event)">
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
@@ -93,7 +93,42 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        Showing @{{ paginate . limit * (paginate . page - 1) + 1 }} to
+                        @{{ paginate . limit * (paginate . page - 1) + paginate . limit }} from @{{ paginate . total }} items
+                    </div>
+                    <div class="col-md-6">
+                        <div class="float-right"  v-if="foods.length > 0">
+                            <paginate v-model="paginate.page" :page-count="Math.ceil(paginate.total/paginate.limit)"
+                                :click-handler="changePage" :prev-text="'<<'" :next-text="'>>'" :container-class="'pagination'" :page-class="'page-item'"
+                                :page-link-class="'page-link-item'"
+                                :prev-class="'prev-item'"
+                                :prev-link-class="'prev-link-item'"
+                                :next-class="'next-item'"
+                                :next-link-class="'next-link-item'">
+                            </paginate>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+@push('js_script')
+<script>
+    let breakfast1 = new Vue({
+        el:'#breakfast',
+        mixins: [app,breakfast],
+        methods: {
+
+        },
+        created: function(){
+            breakfast.getMenu();
+            app.updateStatus();
+        }
+    });
+</script>
+
+@endpush

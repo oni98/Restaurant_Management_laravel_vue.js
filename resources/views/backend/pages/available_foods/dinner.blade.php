@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="dinner">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
@@ -77,3 +77,120 @@
         </div>
     </div>
 </div>
+{{--
+@push('js_script')
+<script>
+    let dinner = new Vue({
+        el:'#dinner',
+        data: {
+            foods: [],
+            status: '',
+            allBreakfast: '',
+            allBrunch: '',
+            allLunch: '',
+            allDinner: '',
+            paginate: {
+                limit: 1,
+                page: 1,
+                total: 0
+            },
+        },
+        methods: {
+            changeLimit: function(event) {
+                let ref = this;
+                ref.paginate.limit = parseInt(event.target.value);
+                ref.getMenu();
+            },
+            changePage: function(page) {
+                let ref = this;
+                ref.paginate.page = page;
+                ref.getMenu();
+            },
+            getMenu: function(){
+                let ref = this;
+                let url = '/api/admin/menu/list';
+                axios.get(url, {
+                    params: {
+                        page: ref.paginate.page,
+                        limit: ref.paginate.limit
+                    }
+                }).then(function(response){
+                    //pagination request
+                    ref.paginate.total = response.data.total;
+                    //request data
+                    ref.foods = response.data.data;
+                    let track = '';
+                    //All Breakfast checkbox
+                    for(let i = 0; i<ref.foods.length; i++){
+                        if(ref.foods[i].category.includes('breakfast')){
+                            if(ref.foods[i].status == 1)
+                                track = 'allBreakfast';
+                            else{
+                                track = 'someBreakfast';
+                                break;
+                            }
+                        }
+                    }
+                    if(track=='allBreakfast')
+                        ref.allBreakfast = 1;
+                    else
+                        ref.allBreakfast = 0;
+
+                    //All Brunch checkbox
+                    for(let i = 0; i<ref.foods.length; i++){
+                        if(ref.foods[i].category.includes('brunch')){
+                            if(ref.foods[i].status == 1)
+                                track = 'allBrunch';
+                            else{
+                                track = 'someBrunch';
+                                break;
+                            }
+                        }
+                    }
+                    if(track=='allBrunch')
+                        ref.allBrunch = 1;
+                    else
+                        ref.allBrunch = 0;
+
+                    //All Lunch checkbox
+                    for(let i = 0; i<ref.foods.length; i++){
+                        if(ref.foods[i].category.includes('lunch')){
+                            if(ref.foods[i].status == 1)
+                                track = 'allLunch';
+                            else{
+                                track = 'someLunch';
+                                break;
+                            }
+                        }
+                    }
+                    if(track=='allLunch')
+                        ref.allLunch = 1;
+                    else
+                        ref.allLunch = 0;
+
+                    //All Dinner checkbox
+                    for(let i = 0; i<ref.foods.length; i++){
+                        if(ref.foods[i].category.includes('dinner')){
+                            if(ref.foods[i].status == 1)
+                                track = 'allDinner';
+                            else{
+                                track = 'someDinner';
+                                break;
+                            }
+                        }
+                    }
+                    if(track=='allDinner')
+                        ref.allDinner = 1;
+                    else
+                        ref.allDinner = 0;
+                });
+            },
+            foodFilter: function (checkCategory) {
+                return this.foods.filter(food => food.category.includes(checkCategory));
+            },
+        },
+
+    })
+</script>
+
+@endpush --}}
